@@ -34,9 +34,14 @@ Due to the strong varying behavior and the large diversity of workload profiles,
 
 #### First approach: an Adaptive Control Strategy to allocate resources to a single application
 
-This part of the work focuses on validating a model for the workload characteristic, as well as the coupling mechanism associating an online estimation process (Recursive Least Squares) to the control action.
+At the beginning of this project, the company provided its developed solution, a control strategy able to allocate resources to a single application. The same strategy was presented and had its first tests analyzed in  [Control strategies for adaptive resource allocation in cloud computing](https://www.sciencedirect.com/science/article/pii/S2405896320325933) (IFAC 2020).
+
+A broader testing campaign, including different input values, was lead and carefully analysed in section 1.2 of [Manuscript](/documentation/manuscript.pdf). As a result, a new control strategy was intended to be designed.
+
+This part of the work focuses on validating a model for the workload characteristic, as well as the coupling mechanism associating an online estimation process (Recursive Least Squares method) to the control action.
 
 ![Control System Block Diagram - Adaptive Control Strategy](/sca.png)
+
 
 #### Second approach: an Optimal Self-Adaptive Control Strategy to manage the resource allocation to multiple applications
 
