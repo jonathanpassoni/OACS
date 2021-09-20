@@ -1,11 +1,11 @@
 # OACS
 **Optimal Self-Adaptive Control Strategy for dynamic resource allocation**
 
-This project presents part of the work developed from a collaboration between NACAD - the High Performance Computing Center (@ the Federal University of Rio de Janeiro) and the R&D Center of Dell-EMC.
+This repository presents the final work developed in a collaborative project between the R&D Center of Dell-EMC and NACAD - the High Performance Computing Center (@ the Federal University of Rio de Janeiro).
 
-Requiring as input only the expected execution time for an application, the OACS allows the resource allocation to provide the right amount of resources (# of cores) to satisfy such requirement. 
+Requiring as input only the expected execution time for an application, the OACS allows the resource allocation to provide the right amount of resources (# of cores) to satisfy such specification. 
 
-No data about the workload is required. The solution implemented in this work embodies an online estimator that identifies all essential parameters.
+No data about the workload is required. The solution implemented embodies an online estimator that identifies all essential parameters.
 
 ## Directory structure
 
@@ -21,7 +21,7 @@ OACS/
 
 ## Description
 
-The main objective was to conceive an algorithm that provides to each application running in a server the sufficient amount of computational resources, allowing them to satisfy their SLA (Service Level Agreement). 
+The main objective was to conceive an algorithm that provides to each application running in a server the right amount of computational resources, allowing them to satisfy their SLA (Service Level Agreement). 
    
 ### Using Control Theory to address the resource allocation problem
 
@@ -31,21 +31,27 @@ Although a mathematical form is not well defined for such case, this work analyz
 
 Due to the strong varying behavior and the large diversity of workload profiles, this work focuses on allocating computational resources only to **iterative workloads**. Such workloads consist of identical small jobs that run in succession, allowing the workload characteristic to vary much less than other sorts of workloads.
 
+#### Main Concept
 
-#### First approach: an Adaptive Control Strategy to allocate resources to a single application
+The main concept of this project has already been the object of:
 
-At the beginning of this project, the company provided its developed solution, a control strategy able to allocate resources to a single application. The same strategy was presented and had its first tests analyzed in  [Control strategies for adaptive resource allocation in cloud computing](https://www.sciencedirect.com/science/article/pii/S2405896320325933) (IFAC 2020).
+- a patent ([Resource Adaptation Using Nonlinear Relationship Between System Performance Metric and Resource Usage](https://patents.google.com/patent/US20210149727A1/en)), presenting an initial resource allocation algorithm using control strategies that takes advantage of the Amdalh's Law to establish a mathematical model for software applications.
 
-A broader testing campaign, including different input values, was lead and carefully analysed in section 1.2 of [Manuscript](/documentation/manuscript.pdf). As a result, a new control strategy was intended to be designed.
+- a conference paper ([Control strategies for adaptive resource allocation in cloud computing](https://www.sciencedirect.com/science/article/pii/S2405896320325933)) presented at IFAC 2020, which presents the same initial strategy and the first results of a simple test case performed.
+
+A broader testing campaign, including different input values, was led and carefully analysed in section 1.2 of [Manuscript](/documentation/manuscript.pdf). As a result, a new control strategy was intended to be designed. Its development was split in two parts, using the agile methodology:
+
+
+#### First Part: an Adaptive Control Strategy to allocate resources to a single application
 
 This part of the work focuses on validating a model for the workload characteristic, as well as the coupling mechanism associating an online estimation process (Recursive Least Squares method) to the control action.
 
 ![Control System Block Diagram - Adaptive Control Strategy](/sca.png)
 
 
-#### Second approach: an Optimal Self-Adaptive Control Strategy to manage the resource allocation to multiple applications
+#### Final Part: an Optimal Self-Adaptive Control Strategy to manage the resource allocation to multiple applications
 
-This final part of the work focuses on the real-time implementation of the control strategy, now consisting by an optimal adaptive technique.
+This final part of the work focuses on the real-time implementation of the control strategy, now consisting of an optimal adaptive technique.
 
 A centralized control module, **Resource Manager**, was conceived to take all required data from applications and then determine the right amount of resources to be allocated to an application. Taking the resource constraint at run-time into account, an optimal solution is evaluated.
 
